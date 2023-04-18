@@ -19,7 +19,8 @@
     "react-dom": "^18.2.0",
     "react-router": "6",
     "react-router-dom": "6",
-    "tailwind": "^4.0.0"
+    "tailwind": "^4.0.0",
+    "vercel": "^28.18.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
