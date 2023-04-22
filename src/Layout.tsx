@@ -1,5 +1,3 @@
-import React from 'react'
-import { Button } from "@mantine/core"
 import { useState } from 'react';
 import {
   AppShell,
@@ -13,17 +11,11 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 
-export default function Home() {
+export default function Layout() {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
-  
-  function sayHi(): void {
-    alert("Hello World!")
-  }
-
   return (
-    <div>
-      <AppShell
+    <AppShell
       // styles={{
       //   main: {
       //     background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
@@ -66,17 +58,7 @@ export default function Home() {
         </Header>
       }
     >
-      <h1 className="text-3xl font-bold underline">
-          Soon to look a lot like Reddit
-        </h1>
-        <Button
-          className="bg-blue-600"
-          onClick={sayHi}
-        >
-          Mantine Button
-        </Button>
+      <Text>Resize app to see responsive navbar in action</Text>
     </AppShell>
-        
-    </div>
-  )
+  );
 }
