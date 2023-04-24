@@ -17,7 +17,7 @@ export default function Home() {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
   
-  function sayHi(): void {
+  const sayHi = (): void => {
     alert("Hello World!")
   }
 
