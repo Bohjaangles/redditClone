@@ -13,7 +13,6 @@ import {
   Burger,
   useMantineTheme,
   Modal,
-  Group,
 } from '@mantine/core';
 import Login from './Login';
 import breadImg from './assets/bread.png';
@@ -39,12 +38,13 @@ export default function Home() {
       // }}
       navbarOffsetBreakpoint="sm"
       asideOffsetBreakpoint="sm"
+      // Navbar is actually the sidebar - called navbar in mantine for whatever reason
       navbar={
         <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 245 }}>
           <Text>Application navbar</Text>
-          <img src={breadImg} alt="Bread" style={{height: '20px', width: '20px'}} />
         </Navbar>
       }
+      // Aside is the right hand sidebar
       aside={
         <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
           <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
@@ -57,6 +57,7 @@ export default function Home() {
           Application footer
         </Footer>
       }
+      // Header here is the navbar, when the viewport becomes small enough, most of the sidebar "navbar in Mantine" becomes a hamburger menu in Header
       header={
         <Header height={{ base: 30, md: 45 }} p="md">
           <div className={'flex'} style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
@@ -70,13 +71,17 @@ export default function Home() {
               />
             </MediaQuery>
 
-            <Text>Breaddit</Text>
-            <img src={breadImg} alt="Bread" style={{height: '20px', width: '20px'}} />
-            <Button className='ml-auto pr-9' onClick={open} >Login</Button>
+            <img  className='ml-2' src={breadImg} alt="Bread" style={{height: '20px', width: '20px'}} />
+            <Text className='ml-2'>Breaddit</Text>
+            {/* This button opens the login modal */}
+            <Button className='ml-auto mr-9 bg-orange-600 rounded-full hover:bg-orange-500' onClick={open} >Log In</Button>
           </div>
         </Header>
       }
       >
+        <Modal opened={modalOpened} onClose={close} title="Log In / Register" centered>
+        {<Login />}
+      </Modal>
       <h1 className="text-3xl font-bold underline">
           Soon to look a lot like Reddit
         </h1>
