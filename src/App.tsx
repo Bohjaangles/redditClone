@@ -2,6 +2,7 @@ import { Button } from "@mantine/core"
 import Home from "./Home"
 import Test from "./Test"
 import Layout from "./Layout"
+import Login from "./Login"
 import { Routes, Route, Link } from "react-router-dom"
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/test" element={<Test />} />
         <Route path="/layout" element={<Layout/>}/>
+        <Route path='/login' element={<Login />} />
       </Routes>
       {/* <h1 className="text-3xl font-bold underline">
         Soon to look a lot like Reddit
