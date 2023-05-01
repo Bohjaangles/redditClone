@@ -10,11 +10,16 @@ import {
 interface FormValues {
   password: string;
   email: string;
+  confirmPassword?: string;
 }
 
 export default function Login() {
-  const [formValues, setFormValues] = useState<FormValues>({email: '', password: ''});
+  const [isRegistered, setIsRegistered] = useState(true)
+  const [formValues, setFormValues] = useState<FormValues>({email: '', password: '', confirmPassword: ''});
   
+  const handleChangeIsRegistered = (): void => {
+    setIsRegistered(!isRegistered)
+  }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const {name, value} = event.target;
@@ -29,27 +34,66 @@ export default function Login() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <TextInput
-          label="Email"
-          name='email'
-          placeholder="Enter your email"
-          value={formValues.email}
-          onChange={handleChange}
-          required
-        />
-        <PasswordInput
-          label="Password"
-          name='password'
-          placeholder="Enter your password"
-          value={formValues.password}
-          onChange={handleChange}
-          required
-        />
-        <Button type="submit">
-          Submit
-        </Button>
-      </form>
+      {isRegistered === true ? 
+      <>
+        <Text>Log In</Text>
+        <form onSubmit={handleSubmit}>
+          <TextInput
+            label="Email"
+            name='email'
+            placeholder="Enter your email"
+            value={formValues.email}
+            onChange={handleChange}
+            required
+          />
+          <PasswordInput
+            label="Password"
+            name='password'
+            placeholder="Enter your password"
+            value={formValues.password}
+            onChange={handleChange}
+            required
+          />
+          <Button onClick={handleChangeIsRegistered}>Not yet registered?</Button>
+          <Button type="submit">
+            Submit
+          </Button>
+        </form>
+      </>
+      : 
+      <>
+        <Text>Register</Text>
+        <form onSubmit={handleSubmit}>
+          <TextInput
+            label="Email"
+            name='email'
+            placeholder="Enter your email"
+            value={formValues.email}
+            onChange={handleChange}
+            required
+          />
+          <PasswordInput
+            label="Password"
+            name='password'
+            placeholder="Enter your password"
+            value={formValues.password}
+            onChange={handleChange}
+            required
+          />
+          <PasswordInput
+            label="Confirm Password"
+            name='Confirmpassword'
+            placeholder="Re-enter your password"
+            value={formValues.confirmPassword}
+            onChange={handleChange}
+            required
+          />
+          <Button onClick={handleChangeIsRegistered}>Already registered?</Button>
+          <Button type="submit">
+            Submit
+          </Button>
+        </form>
+      </>}
     </div>
   )
 }
