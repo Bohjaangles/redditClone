@@ -1,3 +1,4 @@
+// import 'tailwindcss/tailwind.css';
 import { Button } from "@mantine/core"
 import Home from "./Home"
 import Test from "./Test"

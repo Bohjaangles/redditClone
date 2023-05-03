@@ -29,7 +29,7 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div className='tw-'>
       <AppShell
       // styles={{
       //   // main: {
@@ -74,7 +74,7 @@ export default function Home() {
             <img  className='ml-2' src={breadImg} alt="Bread" style={{height: '20px', width: '20px'}} />
             <Text className='ml-2'>Breaddit</Text>
             {/* This button opens the login modal */}
-            <Button className='ml-auto mr-9 bg-orange-600 rounded-full hover:bg-orange-500' onClick={open} >Log In</Button>
+            <Button className='tw-ml-auto tw-mr-9 tw-bg-orange-600 tw-rounded-full hover:tw-bg-orange-500' onClick={open} >Log In</Button>
           </div>
         </Header>
       }
@@ -82,11 +82,11 @@ export default function Home() {
         <Modal opened={modalOpened} onClose={close} title="Log In / Register" centered>
         {<Login />}
       </Modal>
-      <h1 className="text-3xl font-bold underline">
+      <h1 className="tw-text-3xl tw-font-bold tw-underline">
           Soon to look a lot like Reddit
         </h1>
         <Button
-          className="bg-blue-600"
+          className="tw-bg-blue-600"
           onClick={sayHi}
         >
           Mantine Button
