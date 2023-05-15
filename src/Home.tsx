@@ -14,8 +14,8 @@ import {
   useMantineTheme,
   Modal,
 } from '@mantine/core';
-import Login from './Login';
-import breadImg from './assets/bread.png';
+import Login from '@/Login';
+import breadImg from '@/assets/bread.png';
 import { useDisclosure } from '@mantine/hooks';
 
 
