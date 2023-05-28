@@ -19,6 +19,7 @@ export default function Login() {
   const {
     handleSubmit,
     control,
+    register,
     formState: { errors },
     getValues,
   } = useForm<MyFormValues>({
@@ -44,33 +45,31 @@ export default function Login() {
       <>
         <Text>Log In</Text>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Controller
-            name="email"
-            control={control}
-            rules={{ required: 'Email is required', pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'Invalid email address' } }}
-            render={({ field }) => (
-              <TextInput
-                {...field}
-                label="Email"
-                placeholder="Enter your email"
-                required
-              />
-            )}
-          />
+        <TextInput
+          {...register("email", { 
+            required: 'Email is required', 
+            pattern: { 
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, 
+              message: 'Invalid email address' 
+            }
+          })}
+          label="Email"
+          placeholder="Enter your email"
+          required
+        />
           {errors.email && <p className="tw-text-red-500 tw-text-sm">{errors.email.message}</p>}
-          <Controller
-            name="password"
-            control={control}
-            rules={{ required: 'Password is required', minLength: { value: 8, message: 'Password must be at least 8 characters' } }}
-            render={({ field }) => (
-              <PasswordInput
-                {...field}
-                label="Password"
-                placeholder="Enter your password"
-                required
-                />
-              )}
-            />
+          <PasswordInput 
+            {...register("password", {
+              required: 'password is required',
+              minLength: {
+                value: 8,
+                message: 'password must include at least 8 characters'
+              }
+            })}
+            label='Password'
+            placeholder='Password'
+            required
+          />
             {errors.password && <p className="tw-text-red-500 tw-text-sm">{errors.password.message}</p>}
             <Button className='tw-ml-auto tw-mt-2 tw-mr-9 tw-bg-orange-600 tw-rounded-full hover:tw-bg-orange-500' type="submit">
               Submit
@@ -84,49 +83,41 @@ export default function Login() {
         <>
           <Text>Register</Text>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <Controller
-              name="email"
-              control={control}
-              rules={{ required: 'Email is required', pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'Invalid email address' } }}
-              render={({ field }) => (
-                <TextInput
-                  {...field}
-                  label="Email"
-                  placeholder="Enter your email"
-                  required
-                />
-              )}
-            />
+          <TextInput
+            {...register("email", { 
+              required: 'Email is required', 
+              pattern: { 
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, 
+                message: 'Invalid email address' 
+              }
+            })}
+            label="Email"
+            placeholder="Enter your email"
+            required
+          />
             {errors.email && <p className="tw-text-red-500 tw-text-sm">{errors.email.message}</p>}
-            <Controller
-              name="password"
-              control={control}
-              rules={{ required: 'Password is required', minLength: { value: 8, message: 'Password must be at least 8 characters' } }}
-              render={({ field }) => (
-                <PasswordInput
-                  {...field}
-                  label="Password"
-                  placeholder="Enter your password"
-                  required
-                />
-              )}
+            <PasswordInput 
+              {...register("password", {
+                required: 'password is required',
+                minLength: {
+                  value: 8,
+                  message: 'password must include at least 8 characters'
+                }
+              })}
+              label='Password'
+              placeholder='Password'
+              required
             />
             {errors.password && <p className="tw-text-red-500 tw-text-sm">{errors.password.message}</p>}
-            <Controller
-              name="confirmPassword"
-              control={control}
-              rules={{
-                required: 'Confirm Password is required',
-                validate: value => value === getValues().password || 'Passwords must match',
-              }}
-              render={({ field }) => (
-                <PasswordInput
-                  {...field}
-                  label="Confirm Password"
-                  placeholder="Re-enter your password"
-                  required
-                />
-              )}
+            <PasswordInput 
+              {...register('confirmPassword', {
+                required: 'must confirm password',
+                validate: value =>
+                  value === getValues().password || "Passwords do not match :(",
+              })}
+              label="Confirm Password"
+              placeholder='Re-enter your password'
+              required
             />
             {errors.confirmPassword && <p className="tw-text-red-500 tw-text-sm">{errors.confirmPassword.message}</p>}
             <Button className='tw-ml-auto tw-mt-2 tw-mr-9 tw-bg-orange-600 tw-rounded-full hover:tw-bg-orange-500' type="submit">
