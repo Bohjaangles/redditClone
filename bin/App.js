@@ -4,10 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
-const Home_1 = __importDefault(require("./Home"));
-const Test_1 = __importDefault(require("./Test"));
-const Layout_1 = __importDefault(require("./Layout"));
-const Login_1 = __importDefault(require("./Login"));
+const Home_1 = __importDefault(require("@/Home"));
+const Test_1 = __importDefault(require("@/Test"));
+const Layout_1 = __importDefault(require("@/Layout"));
+const Login_1 = __importDefault(require("@/Login"));
 const react_router_dom_1 = require("react-router-dom");
 function App() {
     // function sayHi(): void {

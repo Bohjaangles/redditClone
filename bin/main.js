@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = __importDefault(require("react"));
 const client_1 = __importDefault(require("react-dom/client"));
-const App_1 = __importDefault(require("./App"));
+const App_1 = __importDefault(require("@/App"));
 require("./index.css");
 const react_router_dom_1 = require("react-router-dom");
 // ReactDOM.createRoot(document.getElementById('root')).render(
